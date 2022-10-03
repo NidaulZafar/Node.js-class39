@@ -3,13 +3,15 @@ const server = express();
 
 server.use(express.json());
 
-server.get('/', (request,response)=>{
-   response.send('hello from backend to frontend!');
+server.get('/', (request, response) => {
+  res.setHeader('Content-Type', 'text/plain');
+  response.send('Hello from backend to frontend!');
 });
 
 server.post('/weather', (req, res) => {
   const cityName = req.body.cityName;
-  res.status(200).json({ cityName });
+  res.setHeader('Content-Type', 'text/plain')
+  res.send(cityName)
 })
 
 const PORT = process.env.PORT || 3000; 
