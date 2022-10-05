@@ -3,9 +3,9 @@ const server = express();
 
 server.use(express.json());
 
-server.get('/', (request, response) => {
+server.get('/', (req, res) => {
   res.setHeader('Content-Type', 'text/plain');
-  response.send('Hello from backend to frontend!');
+  res.send('Hello from backend to frontend!');
 });
 
 server.post('/weather', (req, res) => {
