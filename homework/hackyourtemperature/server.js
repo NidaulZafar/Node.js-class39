@@ -17,14 +17,9 @@ server.post('/weather', async (req, res) => {
   const resp = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&APPID=${API_KEY}`);
   const data = await resp.json();
   if (data.cod === String(404)) {
-    res.send(`{
-      weatherText: "No city called '${cityName}' found!"
-    }`)
+    res.send(JSON.parse(`{"weatherText": "No city called '${cityName}' found!"}`))
   } else {
-    res.send(`{
-      weatherText: "${data.name}: ${data.main.temp}"
-    }`);
-
+    res.send(JSON.parse(`{"weatherText": "${data.name}: ${data.main.temp}"}`));
   }
 })
 
