@@ -1,6 +1,7 @@
 const express = require('express');
 const fs = require("fs");
 const app = express();
+const url = require('url');
  
 app.use(express.json());
 
@@ -36,6 +37,33 @@ app.put('/posts/:title', (req, res) => {
   }
 })
 
+// Deleting posts
+app.delete('/blogs/:title', (req, res) => {
+  // How to get the title from the url parameters?
+  const title = req.params.title;
+  if (fs.existsSync(title)) { // Add condition here
+    fs.unlinkSync(title);
+    res.end('ok');
+  } else {
+    res.send(`no blog with ${title} found`)// Respond with message here
+  }
+})
+
+
+// Reading posts
+
+app.get('/blogs/:title', (req, res) => {
+  // How to get the title from the url parameters?
+  const title = req.params.title;
+  // check if post exists
+  if (fs.existsSync(title)) { // Add condition here
+    const post = fs.readFileSync(title);
+    // send response
+    res.end(post);
+  } else {
+    res.send(`no blog with ${title} found`)// Respond with message here
+  }
+})
 
 
 
