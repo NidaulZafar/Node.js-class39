@@ -1,7 +1,6 @@
 import express from 'express';
-import keys from "./sources/keys.js";
+import API_KEY from "./sources/keys.js";
 import fetch from 'node-fetch';
-const API_KEY = '24bb21182ada6dcc2c538be1bb4be546';
 const server = express();
 
 server.use(express.json());
