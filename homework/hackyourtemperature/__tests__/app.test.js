@@ -20,7 +20,7 @@ describe("Test the endpoints result status", () => {
     // const data = JSON.parse(response.text);
     expect(response.status).toEqual(404);
   });
-  it("should return status 404 if no cityName provided", async () => {
+  it("should return status 400 if no cityName provided", async () => {
     const cityName = {"cityName": ""}
     const response = await request.post("/weather").send(cityName);
     // const data = JSON.parse(response.text);
